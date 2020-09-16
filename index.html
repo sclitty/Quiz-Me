@@ -43,35 +43,39 @@
       <row class="row">
 
         <column class="col-md-12">
+
           <div class="jumbotron jumbotron-fluid">
+
             <div class="question-container">
-              <p class="lead question-text"><span id="pre-q">Pre-departure Brief:</span> Are you ready? Click "start" to test your aeronautical knowledge!</p>
+              <p class="lead question-text"><span id="pre-q">Pre-departure Brief:</span> Are you safe to fly? Click "start" to test your ADM knowledge!</p>
             </div>
+
           </div>
+
         </column>
 
       </row>
 
       <hr />
 
-        <div class="answer-btn-wrapper">
+        <div class="answer-btn-container hide">
         <!-- Answer buttons -->
         <row class="row">
 
             <column class="col-md-3 d-flex justify-content-center">
-                <button id="answerA" class="answerBtn">A</button>
+                <button id="answer-A" class="answerBtn">A</button>
             </column>
 
             <column class="col-md-3 d-flex justify-content-center">
-                <button id="answerB" class="answerBtn">B</button>
+                <button id="answer-B" class="answerBtn">B</button>
             </column>
 
             <column class="col-md-3 d-flex justify-content-center">
-                <button id="answerC" class="answerBtn">C</button>
+                <button id="answer-C" class="answerBtn">C</button>
             </column>
 
             <column class="col-md-3 d-flex justify-content-center">
-                <button id="answerD" class="answerBtn">D</button>
+                <button id="answer-D" class="answerBtn">D</button>
             </column>
 
             </row>
@@ -84,12 +88,32 @@
 
         <column class="col-md-12 d-flex justify-content-center">
           <button class="navBtn" id="startBtn">Start</button>   
-          <button class="navBtn" id="nextBtn hide">Next</button>
+          <button class="navBtn hide" id="nextBtn">Next</button>
+          <button class="navBtn hide" id="timerBtn"></button>
+
         </column>
 
       </row>
 
     </div>
+
+    <div id="scores-container">
+      <ul id="scores-list">
+
+
+      </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

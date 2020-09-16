@@ -1,6 +1,6 @@
 console.log("Hello, Grader! pls be nice...")
-
-var questionsObjArr = [
+// Question Set  
+var questionBucket = [
     {
         question: " What’s the first thing you should do once you encounter an emergency or abnormal situation?",
         answerA: "FLY THE PLANE",
@@ -35,7 +35,7 @@ var questionsObjArr = [
     },
     {
         question: " 'Taking chances is foolish' is the antidote to what ‘Hazardous Attitude’?",
-        answerA: "INVULNERABILITY",
+        answerA: "INVULNERABLE",
         answerB: "MACHO",
         answerC: "RESIGNATION",
         answerD: "IMPULSIVITY",
@@ -78,6 +78,98 @@ var questionsObjArr = [
         answerA: "18 minutes",
         answerB: "27 minutes",
         answerC: "3 minutes",
-        answerD: "9 minutes"
+        answerD: "9 minutes",
+        correctAnswer: "3 minutes"
     }
 ]
+// DOM ELEMENTS //
+var startButton = $("#startBtn");
+var nextButton = $("#nextBtn");
+var timerButton = $("#timerBtn");
+
+var answerButton = $(".answerBtn");
+var answerButtonA = $("#answer-A");
+var answerButtonB = $("#answer-B");
+var answerButtonC = $("#answer-C");
+var answerButtonD = $("#answer-D");
+var answerButtonEl = $(".answer-btn-container");
+
+var questionText = $(".question-text");
+
+var scoresList = $("#scores-list");
+
+var shuffledQuestions, currentQuestionIndex
+
+
+// Start button to start quiz
+startButton.on("click", startQuiz);
+
+// Next Button to select next question
+nextButton.on("click", () => {
+    currentQuestionIndex++
+    nextQuestion(); 
+})
+
+// function the start the quiz
+function startQuiz() {
+    // console.log("begin the celebration of knowledge!"); //
+    startButton.addClass("hide");
+    timerButton.removeClass("hide");
+    answerButtonEl.removeClass("hide");
+    shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
+    currentQuestionIndex = 0;
+
+    var timeRemain = 60;
+    var quizTimer = setInterval(() => {
+        timeRemain--;
+        timerButton.text("Time Remaining: " + timeRemain);
+
+        if (timeRemain < 20){
+            timerButton.css("background", "rgba(235, 60, 60, 0.829)");
+        };
+
+        if(timeRemain === 0){
+            clearInterval(quizTimer);
+            timerButton.addClass("hide");
+            // get scores
+            endQuiz();
+        };
+
+    }, 1000);
+
+    nextQuestion();
+};
+
+// function to set next question //
+function nextQuestion() {
+    showQuestion(shuffledQuestions[currentQuestionIndex])
+};
+// function to show the question //
+function showQuestion(question) {
+    // Putting the question from obj array into the question-text
+    questionText.text(question.question);
+    // Putting answers into the answerBtn text
+    answerButtonA.text(question.answerA);
+    answerButtonB.text(question.answerB);
+    answerButtonC.text(question.answerC);
+    answerButtonD.text(question.answerD);
+};
+
+// What happens when an answer is selected //
+// function selectAnswer() {
+//     answerButton.on("click", () => {
+//         if () {
+//             nextButton.removeClass("hide");
+//             // console.log("WOO!");
+//         } 
+//         else if (shuffledQuestions.length > currentQuestionIndex + 1) 
+//         {
+//             endQuiz();
+//         }
+//     });
+// };
+
+// What do we do after the quiz is over? // 
+function endQuiz() {
+
+};

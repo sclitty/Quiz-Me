@@ -1,4 +1,6 @@
-
+:root {
+    --hue-neutral: 
+}
 
 .background-image { 
     z-index: -1;
@@ -51,7 +53,6 @@ button:focus {
 }
 
 .answerBtn {
-    
   background-color: rgba(51, 51, 51, 0.685);   
   border: none;
   color: white;
@@ -61,7 +62,6 @@ button:focus {
   margin: 2px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.452), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
 .answerBtn:hover {
@@ -88,12 +88,20 @@ button:focus {
 }
 
 .navBtn:hover {
-    opacity: .9;
+    opacity: .5;
 }
 
 .navBtn:active {
     color: rgba(0, 0, 0, 0.253);
     border: none;
     transform: translateY(4px)
+}
+
+#timerBtn {
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
 }
 
