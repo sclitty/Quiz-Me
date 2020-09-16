@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+
+    <title>Quiz-Me</title>
+  </head>
+
+  <body>
+
+    <!-- Background Image -->
+    <img src="images/pixel77-free-vector-clouds-0829.png" class="background-image" alt="Vector Clouds">
+
+
+    <!-- Container for all quiz content  -->
+    <div class="container">
+      <!-- Header and Timer -->
+      <row class="row header-row">
+
+        <column class="col-md-12">
+          <h1 id="title-header"><span id="quizme">Quiz-Me:</span> Aeronautical Decision Making</h1>
+        </column>
+
+        <!-- <column class="col-md-6">
+          <!-- Timer will be placed here -->
+          <!-- <div id="timer-box"></div> -->
+        <!-- </column> -->
+
+      </row>
+
+      <hr />
+
+      <!-- Text box for questions to appear -->
+      <row class="row">
+
+        <column class="col-md-12">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="question-container">
+              <p class="lead question-text"><span id="pre-q">Pre-departure Brief:</span> Are you ready? Click "start" to test your aeronautical knowledge!</p>
+            </div>
+          </div>
+        </column>
+
+      </row>
+
+      <hr />
+
+        <div class="answer-btn-wrapper">
+        <!-- Answer buttons -->
+        <row class="row">
+
+            <column class="col-md-3 d-flex justify-content-center">
+                <button id="answerA" class="answerBtn">A</button>
+            </column>
+
+            <column class="col-md-3 d-flex justify-content-center">
+                <button id="answerB" class="answerBtn">B</button>
+            </column>
+
+            <column class="col-md-3 d-flex justify-content-center">
+                <button id="answerC" class="answerBtn">C</button>
+            </column>
+
+            <column class="col-md-3 d-flex justify-content-center">
+                <button id="answerD" class="answerBtn">D</button>
+            </column>
+
+            </row>
+        </div>
+
+      <hr>
+
+      <!-- Start/Next buttons go here -->
+      <row class="row">
+
+        <column class="col-md-12 d-flex justify-content-center">
+          <button class="navBtn" id="startBtn">Start</button>   
+          <button class="navBtn" id="nextBtn hide">Next</button>
+        </column>
+
+      </row>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+  </body>
+
+</html>
