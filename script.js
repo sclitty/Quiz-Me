@@ -148,7 +148,7 @@ function startQuiz() {
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
 
-    var timeRemain = 5;
+    var timeRemain = 120;
     quizTimer = setInterval(() => {
         timeRemain--;
         timerButton.text("Time Remaining: " + timeRemain);
