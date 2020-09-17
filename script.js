@@ -99,7 +99,7 @@ var answerButtonEl = $(".answer-btn-container");
 var questionText = $(".question-text");
 var quizContainerEl = $(".quiz-container");
 var scoresContainerEl = $(".scores-container");
-var scoresList = $("#scores-list");
+var scoresList = $("#score-list");
 
 var quizTimer;
 var timeRemain;
@@ -107,8 +107,8 @@ var shuffledQuestions;
 var currentQuestionIndex;
 
 var highScoreArr = [];
-let userInput= "";
-console.log(userInput);
+// let userInput= "";
+// console.log(userInput);
 
 // retreving local storage 
 // TODO: save what we get back from local storage with the key of highScore and save it to a var, Json.pase, and add it to our array with a for loop
@@ -119,7 +119,6 @@ if(scoresFromLocalStorage !== null){
         
     }
 }
-
 
 // CLICK EVENTS 
 
@@ -133,14 +132,11 @@ nextButton.on("click", () => {
 });
 // Restart the Quiz
 restartButton.on("click", () => {
-    // scoresContainerEl.addClass("hide");
-    // quizContainerEl.removeClass("hide");
-    location.reload();
-    
     // I want to bring back to home page with functions refreshed 
+    location.reload();
 });
 
-endButton.on("click", () => {
+endButton.on("click", function () {
     // log time remaining in local storage setItem
     
     // end timer here 
@@ -156,10 +152,11 @@ endButton.on("click", () => {
         userName: userInput,
         userScore: timeRemain
     }
+
     highScoreArr.push(score)
     localStorage.setItem("highScore", JSON.stringify(highScoreArr));
     // append items <li>
-    // TODO: we need to loop over the highScoreArr inside the for lopp create a li , give it the text , and append it to scoreList
+    // TODO: we need to loop over the highScoreArr inside the for loop create a li , give it the text , and append it to scoreList
     for(var i = 0 ; i<highScoreArr.length ; i++ ){
         var myLi = $("<li>")
         myLi.text("Name: "+highScoreArr[i].userName + " Score: "+highScoreArr[i].userScore)
