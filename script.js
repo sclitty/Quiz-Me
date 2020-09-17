@@ -1,6 +1,6 @@
 console.log("Hello, Grader! pls be nice...")
 // Question Set  
-var questionBucket = [
+const questionBucket = [
     {
         question: " What’s the first thing you should do once you encounter an emergency or abnormal situation?",
         answerA: "FLY THE PLANE",
@@ -114,6 +114,7 @@ nextButton.on("click", () => {
 function startQuiz() {
     // console.log("begin the celebration of knowledge!"); //
     startButton.addClass("hide");
+    // nextButton.removeClass("hide");
     timerButton.removeClass("hide");
     answerButtonEl.removeClass("hide");
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
@@ -146,6 +147,7 @@ function nextQuestion() {
 };
 // function to show the question //
 function showQuestion(question) {
+    
     // Putting the question from obj array into the question-text
     questionText.text(question.question);
     // Putting answers into the answerBtn text
@@ -153,21 +155,29 @@ function showQuestion(question) {
     answerButtonB.text(question.answerB);
     answerButtonC.text(question.answerC);
     answerButtonD.text(question.answerD);
+
+    nextButton.addClass("hide");
+
+    selectAnswer();
 };
 
 // What happens when an answer is selected //
-// function selectAnswer() {
-//     answerButton.on("click", () => {
-//         if () {
-//             nextButton.removeClass("hide");
-//             // console.log("WOO!");
-//         } 
-//         else if (shuffledQuestions.length > currentQuestionIndex + 1) 
-//         {
-//             endQuiz();
-//         }
-//     });
-// };
+function selectAnswer() {
+    answerButtonEl.on("click", (event) => {
+        if (event.target.matches("button")) {
+        //   console.log(event.target.textContent);
+           if (event.target.textContent === questionBucket[currentQuestionIndex].correctAnswer) {
+            nextButton.removeClass("hide");
+            console.log("WOO!");
+        } 
+        else if (shuffledQuestions.length > currentQuestionIndex + 1) 
+        {
+            endQuiz();
+        } 
+        }
+        
+    });
+};
 
 // What do we do after the quiz is over? // 
 function endQuiz() {
