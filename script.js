@@ -106,9 +106,19 @@ var timeRemain;
 var shuffledQuestions;
 var currentQuestionIndex;
 
+var highScoreArr = [];
 let userInput= "";
 console.log(userInput);
 
+// retreving local storage 
+// TODO: save what we get back from local storage with the key of highScore and save it to a var, Json.pase, and add it to our array with a for loop
+var scoresFromLocalStorage= JSON.parse(localStorage.getItem("highScore"))
+if(scoresFromLocalStorage !== null){
+    for (let j = 0; j < scoresFromLocalStorage.length; j++) {
+        highScoreArr.push(scoresFromLocalStorage[j])
+        
+    }
+}
 
 
 // CLICK EVENTS 
@@ -123,8 +133,9 @@ nextButton.on("click", () => {
 });
 // Restart the Quiz
 restartButton.on("click", () => {
-    scoresContainerEl.addClass("hide");
-    quizContainerEl.removeClass("hide");
+    // scoresContainerEl.addClass("hide");
+    // quizContainerEl.removeClass("hide");
+    location.reload();
     
     // I want to bring back to home page with functions refreshed 
 });
@@ -138,15 +149,22 @@ endButton.on("click", () => {
     scoresContainerEl.removeClass("hide");
     // Prompts for user to submit 
     userInput = prompt("Please enter your initials.");
-    localStorage.setItem(timeRemain, userInput);
-    localStorage.getItem(timeRemain, userInput);
-    // pull local storage getItem
-    // var score = {
-    //     userName: name,
-    //     userScore: score
-    // }
-    // append items <li>
 
+    // localStorage.getItem(timeRemain, userInput);
+    // pull local storage getItem
+    var score = {
+        userName: userInput,
+        userScore: timeRemain
+    }
+    highScoreArr.push(score)
+    localStorage.setItem("highScore", JSON.stringify(highScoreArr));
+    // append items <li>
+    // TODO: we need to loop over the highScoreArr inside the for lopp create a li , give it the text , and append it to scoreList
+    for(var i = 0 ; i<highScoreArr.length ; i++ ){
+        var myLi = $("<li>")
+        myLi.text("Name: "+highScoreArr[i].userName + " Score: "+highScoreArr[i].userScore)
+        scoresList.append(myLi)
+    }
     // console.log(userInput);
 });
 
