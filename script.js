@@ -101,6 +101,8 @@ var scoresList = $("#scores-list");
 
 var shuffledQuestions, currentQuestionIndex
 
+var points = 0;
+
 
 // Start button to start quiz
 startButton.on("click", startQuiz);
@@ -144,6 +146,10 @@ function startQuiz() {
 // function to set next question //
 function nextQuestion() {
     showQuestion(shuffledQuestions[currentQuestionIndex])
+    if (shuffledQuestions.length > currentQuestionIndex.length + 1) 
+           {
+            endQuiz();
+           } 
 };
 // function to show the question //
 function showQuestion(question) {
@@ -171,18 +177,7 @@ function selectAnswer() {
             nextButton.removeClass("hide");
             console.log("WOO!");
            }
-        if (currentQuestionIndex > shuffledQuestions) 
-           {
-            nextButton.click(function() {
-                clearInterval(quizTimer);
-                timerButton.addClass("hide");
-                endButton.removeClass("hide"); 
-            });
-            nextButton.addClass("hide");
-
-           } 
-        }
-        
+        }  
     });
      
     endQuiz();
@@ -190,6 +185,10 @@ function selectAnswer() {
 
 // What do we do after the quiz is over? // 
 function endQuiz() {
-    
+    nextButton.click(function() {
+        clearInterval(quizTimer);
+        timerButton.addClass("hide");
+        endButton.removeClass("hide"); 
+    });
 
 };
