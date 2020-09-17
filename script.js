@@ -112,7 +112,7 @@ nextButton.on("click", () => {
     currentQuestionIndex++
     nextQuestion(); 
 });
-
+var quizTimer;
 // function the start the quiz
 function startQuiz() {
     // console.log("begin the celebration of knowledge!"); //
@@ -123,7 +123,7 @@ function startQuiz() {
     currentQuestionIndex = 0;
 
     var timeRemain = 60;
-    var quizTimer = setInterval(() => {
+    quizTimer = setInterval(() => {
         timeRemain--;
         timerButton.text("Time Remaining: " + timeRemain);
 
@@ -145,11 +145,11 @@ function startQuiz() {
 
 // function to set next question //
 function nextQuestion() {
-    showQuestion(shuffledQuestions[currentQuestionIndex])
-    if (shuffledQuestions.length > currentQuestionIndex.length + 1) 
-           {
-            endQuiz();
-           } 
+    if (shuffledQuestions.length === currentQuestionIndex) {
+        endQuiz()
+    } else {
+       showQuestion(shuffledQuestions[currentQuestionIndex])
+    }
 };
 // function to show the question //
 function showQuestion(question) {
@@ -179,16 +179,13 @@ function selectAnswer() {
            }
         }  
     });
-     
-    endQuiz();
 };
 
 // What do we do after the quiz is over? // 
 function endQuiz() {
-    nextButton.click(function() {
         clearInterval(quizTimer);
         timerButton.addClass("hide");
+        nextButton.addClass("hide");
         endButton.removeClass("hide"); 
-    });
 
 };
