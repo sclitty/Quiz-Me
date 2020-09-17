@@ -87,6 +87,7 @@ var startButton = $("#startBtn");
 var nextButton = $("#nextBtn");
 var timerButton = $("#timerBtn");
 var endButton = $("#endBtn");
+var restartButton= $("#restartBtn")
 
 var answerButton = $(".answerBtn");
 var answerButtonA = $("#answer-A");
@@ -96,13 +97,15 @@ var answerButtonD = $("#answer-D");
 var answerButtonEl = $(".answer-btn-container");
 
 var questionText = $(".question-text");
-
+var quizContainerEl = $(".quiz-container");
+var scoresContainerEl = $(".scores-container");
 var scoresList = $("#scores-list");
 
 var shuffledQuestions, currentQuestionIndex
 
 var points = 0;
 
+// CLICK EVENTS 
 
 // Start button to start quiz
 startButton.on("click", startQuiz);
@@ -112,6 +115,13 @@ nextButton.on("click", () => {
     currentQuestionIndex++
     nextQuestion(); 
 });
+// Restart the Quiz
+restartButton.on("click", () => {
+    scoresContainerEl.addClass("hide");
+    quizContainerEl.removeClass("hide");
+    // I want to bring back to home page with functions refreshed 
+});
+
 var quizTimer;
 // function the start the quiz
 function startQuiz() {
@@ -122,7 +132,7 @@ function startQuiz() {
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
 
-    var timeRemain = 60;
+    var timeRemain = 120;
     quizTimer = setInterval(() => {
         timeRemain--;
         timerButton.text("Time Remaining: " + timeRemain);
@@ -176,6 +186,8 @@ function selectAnswer() {
            {
             nextButton.removeClass("hide");
             console.log("WOO!");
+           } else {
+            //    make time interval drop with wrong answer 
            }
         }  
     });
@@ -186,6 +198,15 @@ function endQuiz() {
         clearInterval(quizTimer);
         timerButton.addClass("hide");
         nextButton.addClass("hide");
-        endButton.removeClass("hide"); 
+        endButton.removeClass("hide");
+
+        endButton.on("click", () => {
+            quizContainerEl.addClass("hide");
+            scoresContainerEl.removeClass("hide");
+        });
+
+        // make prompt to get initials and add them to local storage with last recorded time interval. 
+
+        // append to new <li> on scoresList
 
 };

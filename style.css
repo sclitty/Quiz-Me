@@ -26,6 +26,10 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.295), 0 12px 40px 0 rgba(0, 0, 0, 0.19);
 }
 
+.scores-container {
+    font-family: 'Special Elite', cursive;
+}
+
 .jumbotron {
     border-radius: 15px;
 }
@@ -46,6 +50,10 @@ body {
 #pre-q {
     color: rgba(235, 60, 60, 0.829);
 }
+
+
+
+
 
 /* Button Styling */
 button:focus {
@@ -98,10 +106,11 @@ button:focus {
 }
 
 #timerBtn {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 .hide {
     display: none;
 }
+
 

@@ -22,7 +22,7 @@
 
 
     <!-- Container for all quiz content  -->
-    <div class="container">
+    <div class="container quiz-container">
       <!-- Header and Timer -->
       <row class="row header-row">
 
@@ -98,21 +98,27 @@
 
     </div>
 
-    <div id="scores-container">
-      <ul id="scores-list">
-
-
-      </ul>
+    <div class="scores-container hide">
+      <row class="row">
+        <column class="col-md-12 justify-content-center">
+          <div class="card" style="width: 18rem;">
+            <img src="images/pexels-septemberth-3402846.jpg" class="card-img-top" alt="Airplane">
+            <div class="card-body">
+              <h5 class="card-title">High Scores!</h5>
+              <p class="card-text">See where you rank! Remember, this is an opportunity to learn and better prepare yourself for your next flight. The score is baseline to see what you need to review.</p>
+            </div>
+            <ul class="list-group list-group-flush leader-board score-list">
+              <!-- Append Scores here <li> -->
+            </ul>
+            <div class="card-body">
+              <br>
+              <button class ="navBtn" id="restartBtn">RESTART!</button>
+              <br>
+            </div>
+          </div>
+        </column>
+      </row> 
     </div>
-
-
-
-
-
-
-
-
-
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
