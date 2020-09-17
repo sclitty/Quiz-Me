@@ -102,12 +102,14 @@ var scoresContainerEl = $(".scores-container");
 var scoresList = $("#scores-list");
 
 var quizTimer;
+var timeRemain;
 var shuffledQuestions;
 var currentQuestionIndex;
-var userInput = "";
+
+let userInput= "";
 console.log(userInput);
 
-var points = 0;
+
 
 // CLICK EVENTS 
 
@@ -123,21 +125,30 @@ nextButton.on("click", () => {
 restartButton.on("click", () => {
     scoresContainerEl.addClass("hide");
     quizContainerEl.removeClass("hide");
+    
     // I want to bring back to home page with functions refreshed 
 });
 
 endButton.on("click", () => {
+    // log time remaining in local storage setItem
+    
+    // end timer here 
+    clearInterval(quizTimer);
     quizContainerEl.addClass("hide");
     scoresContainerEl.removeClass("hide");
     // Prompts for user to submit 
-    userInput = prompt("Please enter your initials.")
-    console.log(userInput);
+    userInput = prompt("Please enter your initials.");
+    localStorage.setItem(timeRemain, userInput);
+    localStorage.getItem(timeRemain, userInput);
+    // pull local storage getItem
+    // var score = {
+    //     userName: name,
+    //     userScore: score
+    // }
+    // append items <li>
+
+    // console.log(userInput);
 });
-
-function disableButton (myButton) {
-    myButton.disabled = true;
-};
-
 
 // FUNCTION TO START QUIZ
 function startQuiz() {
@@ -148,7 +159,7 @@ function startQuiz() {
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
 
-    var timeRemain = 120;
+    timeRemain = 200;
     quizTimer = setInterval(() => {
         timeRemain--;
         timerButton.text("Time Remaining: " + timeRemain);
@@ -169,7 +180,7 @@ function startQuiz() {
     nextQuestion();
 };
 
-// function to set next question //
+// GRABBING NEXT QUESTION AND CHECKING PASSWORD BANK //
 function nextQuestion() {
     if (shuffledQuestions.length === currentQuestionIndex) {
         endQuiz()
@@ -177,7 +188,7 @@ function nextQuestion() {
        showQuestion(shuffledQuestions[currentQuestionIndex])
     }
 };
-// function to show the question //
+// FUNCTION TO SHOW OUR PASSWORD AND ANSWER TEXT //
 function showQuestion(question) {
     
     // Putting the question from obj array into the question-text
@@ -193,7 +204,7 @@ function showQuestion(question) {
     selectAnswer();
 };
 
-// What happens when an answer is selected //
+// SELECTING ANSWER AND CHECKING IF CORRECT //
 function selectAnswer() {
     answerButtonEl.on("click", (event) => {
         if (event.target.matches("button")) {
@@ -203,25 +214,16 @@ function selectAnswer() {
             nextButton.removeClass("hide");
             console.log("WOO!");
            } else {
-            //    make time interval drop with wrong answer 
+            timeRemain -= 5
            }
         }  
     });
 };
 
-// What do we do after the quiz is over? // 
+// QUIZ IS DONE LETS GET A SCORE UP ON THE SCORE SHEET // 
 function endQuiz() {
-        clearInterval(quizTimer);
         timerButton.addClass("hide");
         nextButton.addClass("hide");
         endButton.removeClass("hide");
-        // maybe cant disable the buttons since it's an click listener in the answerEl
-        
-        
-
-        // make prompt to get initials and add them to local storage with last recorded time interval. 
-
-        // append to new <li> on scoresList
-
 };
 
