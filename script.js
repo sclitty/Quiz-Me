@@ -86,6 +86,7 @@ const questionBucket = [
 var startButton = $("#startBtn");
 var nextButton = $("#nextBtn");
 var timerButton = $("#timerBtn");
+var endButton = $("#endBtn");
 
 var answerButton = $(".answerBtn");
 var answerButtonA = $("#answer-A");
@@ -108,13 +109,12 @@ startButton.on("click", startQuiz);
 nextButton.on("click", () => {
     currentQuestionIndex++
     nextQuestion(); 
-})
+});
 
 // function the start the quiz
 function startQuiz() {
     // console.log("begin the celebration of knowledge!"); //
     startButton.addClass("hide");
-    // nextButton.removeClass("hide");
     timerButton.removeClass("hide");
     answerButtonEl.removeClass("hide");
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
@@ -166,20 +166,30 @@ function selectAnswer() {
     answerButtonEl.on("click", (event) => {
         if (event.target.matches("button")) {
         //   console.log(event.target.textContent);
-           if (event.target.textContent === questionBucket[currentQuestionIndex].correctAnswer) {
+        if (event.target.textContent === questionBucket[currentQuestionIndex].correctAnswer) 
+           {
             nextButton.removeClass("hide");
             console.log("WOO!");
-        } 
-        else if (shuffledQuestions.length > currentQuestionIndex + 1) 
-        {
-            endQuiz();
-        } 
+           }
+        if (currentQuestionIndex > shuffledQuestions) 
+           {
+            nextButton.click(function() {
+                clearInterval(quizTimer);
+                timerButton.addClass("hide");
+                endButton.removeClass("hide"); 
+            });
+            nextButton.addClass("hide");
+
+           } 
         }
         
     });
+     
+    endQuiz();
 };
 
 // What do we do after the quiz is over? // 
 function endQuiz() {
+    
 
 };
