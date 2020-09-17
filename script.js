@@ -101,7 +101,11 @@ var quizContainerEl = $(".quiz-container");
 var scoresContainerEl = $(".scores-container");
 var scoresList = $("#scores-list");
 
-var shuffledQuestions, currentQuestionIndex
+var quizTimer;
+var shuffledQuestions;
+var currentQuestionIndex;
+var userInput = "";
+console.log(userInput);
 
 var points = 0;
 
@@ -122,8 +126,20 @@ restartButton.on("click", () => {
     // I want to bring back to home page with functions refreshed 
 });
 
-var quizTimer;
-// function the start the quiz
+endButton.on("click", () => {
+    quizContainerEl.addClass("hide");
+    scoresContainerEl.removeClass("hide");
+    // Prompts for user to submit 
+    userInput = prompt("Please enter your initials.")
+    console.log(userInput);
+});
+
+function disableButton (myButton) {
+    myButton.disabled = true;
+};
+
+
+// FUNCTION TO START QUIZ
 function startQuiz() {
     // console.log("begin the celebration of knowledge!"); //
     startButton.addClass("hide");
@@ -132,7 +148,7 @@ function startQuiz() {
     shuffledQuestions = questionBucket.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
 
-    var timeRemain = 120;
+    var timeRemain = 5;
     quizTimer = setInterval(() => {
         timeRemain--;
         timerButton.text("Time Remaining: " + timeRemain);
@@ -199,14 +215,13 @@ function endQuiz() {
         timerButton.addClass("hide");
         nextButton.addClass("hide");
         endButton.removeClass("hide");
-
-        endButton.on("click", () => {
-            quizContainerEl.addClass("hide");
-            scoresContainerEl.removeClass("hide");
-        });
+        // maybe cant disable the buttons since it's an click listener in the answerEl
+        
+        
 
         // make prompt to get initials and add them to local storage with last recorded time interval. 
 
         // append to new <li> on scoresList
 
 };
+

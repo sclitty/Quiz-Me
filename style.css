@@ -28,6 +28,7 @@ body {
 
 .scores-container {
     font-family: 'Special Elite', cursive;
+    margin: auto;
 }
 
 .jumbotron {
@@ -50,10 +51,6 @@ body {
 #pre-q {
     color: rgba(235, 60, 60, 0.829);
 }
-
-
-
-
 
 /* Button Styling */
 button:focus {
